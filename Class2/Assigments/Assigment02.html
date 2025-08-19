@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mark Sheet</title>
+  </head>
+  <body>
+    <script>
+      // Q1: Write a program of a basic mark sheet using JavaScript involves let, const variables to
+      // store marks for different subjects and then calculating the total marks, percentage, and grade
+      // based on those marks. Using template literals and variable using let and const and final
+      // output is shown in document.write().
+
+      const totalSubjects = 5;
+      const maxMarksPerSubject = 100;
+      const maxMarks = totalSubjects * maxMarksPerSubject;
+
+      let english = 85;
+      let math = 90;
+      let science = 78;
+      let computer = 88;
+      let urdu = 80;
+
+      let obtainedMarks = english + math + science + computer + urdu;
+
+      let percentage = (obtainedMarks / maxMarks) * 100;
+
+      // if Else Use
+      // let grade;
+      // if (percentage >= 80) {
+      //   grade = "A+";
+      // } else if (percentage >= 70) {
+      //   grade = "A";
+      // } else if (percentage >= 60) {
+      //   grade = "B";
+      // } else if (percentage >= 50) {
+      //   grade = "C";
+      // } else {
+      //   grade = "Fail";
+      // }
+
+      // use Ternary Operator
+      let grade =
+        percentage >= 80
+          ? "A+"
+          : percentage >= 70
+          ? "A"
+          : percentage >= 60
+          ? "B"
+          : percentage >= 50
+          ? "C"
+          : "Fail";
+
+      let marksheet = `
+      <h2> Student Marksheet</h2>
+      English: ${english} <br>
+      Math: ${math} <br>
+      Science: ${science} <br>
+      Computer: ${computer} <br>
+      Urdu: ${urdu} <br><br>
+      <b>Total Marks:</b> ${maxMarks} <br>
+      <b>Obtained Marks:</b> ${obtainedMarks} <br>
+      <b>Percentage:</b> ${percentage.toFixed(2)}% <br>
+      <b>Grade:</b> ${grade}
+    `;
+
+      document.write(marksheet);
+    </script>
+  </body>
+</html>

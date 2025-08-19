@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biodata</title>
+  </head>
+  <body>
+    <script>
+      //  Q1: Write a program in which you have to create your own biodata details are: your name, email, city,
+      // education, occupation, phone number, institute name etc. Using template literals and variable using let
+      // and const and final output is shown in document.write() same as in below:
+
+      const name = "Shoaib Memon";
+      let age = 33;
+      let occupation = "Junior Software Developer";
+      const email = "shoaibmemonit@gmail.com";
+      let phoneNumber = "0331-3416850";
+      const instituteName =
+        "Jawan Pakistan Sir Adamjee Institute of Technology Hussainabad";
+      let education = "Module B Web Development";
+
+      let biodata = `
+      Name: ${name} <br> <br>
+      Age: ${age} <br> <br>
+      Occupation: ${occupation} <br> <br>
+      Email: ${email} <br> <br>
+      Phone Number: ${phoneNumber} <br> <br>
+      Institute Name: ${instituteName} <br> <br>
+      Education: ${education} <br> <br>
+    `;
+
+      document.write(biodata);
+
+      // Q2: Students using this below image you have to create each variable keyword apply at least one
+      // example for tasks executing. I share the output everyone must same as in the image.
+
+      var a = "First";
+      var abc;
+      var a = "Second";
+      console.log(a);
+
+      var a = "Third";
+
+      function abcFunction() {
+        var a = "Fourth";
+        console.log(a);
+      }
+      abcFunction();
+
+      let b = "Hello";
+      b = "World";
+      console.log(b);
+
+      const c = "Fixed Value";
+      console.log(c);
+    </script>
+  </body>
+</html>
