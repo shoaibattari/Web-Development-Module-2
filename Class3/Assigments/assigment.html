@@ -1,0 +1,155 @@
+<!-- Q:2 create a mobile brand and model filtering app with filter mobile brand 
+ and then second drop-down have same brand mobile in second drop-down and a single search button 
+ when click the selected brand and model have shown in html body -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Brand and Model Filter</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-6 rounded-lg shadow-md w-3xl">
+      <h1 class="text-xl font-bold mb-4">Mobile Filter</h1>
+      <div>
+        <label for="brand" class="block text-xs font-medium text-gray-700"
+          >Select Brand</label
+        >
+        <select
+          id="brand"
+          class="py-2 block text-sm w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50"
+          onchange="populateModels()"
+        >
+          <option value="">Select Brand</option>
+          <option value="Apple">Apple</option>
+          <option value="Samsung">Samsung</option>
+          <option value="Google">Google</option>
+        </select>
+      </div>
+      <div class="mt-4">
+        <label for="model" class="block text-xs font-medium text-gray-700"
+          >Select Model</label
+        >
+        <select
+          id="model"
+          class="py-2 text-sm block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50"
+        >
+          <option value="">Select Model</option>
+        </select>
+      </div>
+      <button
+        id="searchButton"
+        class="mt-4 w-full bg-blue-500 text-white py-2 rounded-md"
+        onclick="showSelection()"
+      >
+        Search
+      </button>
+      <div id="result" class="mt-4 text-lg font-semibold"></div>
+      <div
+        id="error"
+        class="mt-4 text-red-700 text-lg font-semibold text-center"
+      ></div>
+    </div>
+
+    <script>
+      const models = {
+        Apple: [
+          {
+            name: "iPhone 13",
+            price: "$799",
+            details: "6.1-inch display, A15 Bionic chip, 5G capable.",
+          },
+          {
+            name: "iPhone 12",
+            price: "$699",
+            details: "6.1-inch display, A14 Bionic chip, 5G capable.",
+          },
+          {
+            name: "iPhone 11",
+            price: "$599",
+            details: "6.1-inch display, A13 Bionic chip.",
+          },
+        ],
+        Samsung: [
+          {
+            name: "Galaxy S21",
+            price: "$799",
+            details: "6.2-inch display, Exynos 2100, 5G capable.",
+          },
+          {
+            name: "Galaxy Note 20",
+            price: "$999",
+            details: "6.7-inch display, Snapdragon 865+, S Pen included.",
+          },
+          {
+            name: "Galaxy A52",
+            price: "$349",
+            details: "6.5-inch display, Snapdragon 720G.",
+          },
+        ],
+        Google: [
+          {
+            name: "Pixel 6",
+            price: "$599",
+            details: "6.4-inch display, Google Tensor chip, 5G capable.",
+          },
+          {
+            name: "Pixel 5",
+            price: "$699",
+            details: "6.0-inch display, Snapdragon 765G, 5G capable.",
+          },
+          {
+            name: "Pixel 4a",
+            price: "$349",
+            details: "5.8-inch display, Snapdragon 730G.",
+          },
+        ],
+      };
+
+      function populateModels() {
+        const brandSelect = document.getElementById("brand");
+        const modelSelect = document.getElementById("model");
+        const selectedBrand = brandSelect.value;
+
+        // Clear previous models
+        modelSelect.innerHTML = '<option value="">--Select Model--</option>';
+
+        if (selectedBrand) {
+          models[selectedBrand].forEach((model) => {
+            const option = document.createElement("option");
+            option.value = model.name; // Set the model name as the value
+            option.textContent = model.name; // Display the model name
+            modelSelect.appendChild(option);
+          });
+        }
+      }
+
+      function showSelection() {
+        const brandSelect = document.getElementById("brand");
+        const modelSelect = document.getElementById("model");
+        const resultDiv = document.getElementById("result");
+        const errorDiv = document.getElementById("error");
+
+        const selectedBrand = brandSelect.value;
+        const selectedModelName = modelSelect.value;
+
+        if (selectedBrand && selectedModelName) {
+          // Find the selected model details
+          const selectedModel = models[selectedBrand].find(
+            (model) => model.name === selectedModelName
+          );
+          resultDiv.innerHTML = `
+                    <p>Selected Brand: <strong>${selectedBrand}</strong></p>
+                    <p>Model: <strong>${selectedModel.name}</strong></p>
+                    <p>Price: <strong>${selectedModel.price}</strong></p>
+                    <p>Details: <strong>${selectedModel.details}</strong></p>
+                `;
+        } else {
+          errorDiv.innerText = "Please select both a brand and a model.";
+        }
+      }
+    </script>
+  </body>
+</html>
