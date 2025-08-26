@@ -114,13 +114,13 @@
         const selectedBrand = brandSelect.value;
 
         // Clear previous models
-        modelSelect.innerHTML = '<option value="">--Select Model--</option>';
+        modelSelect.innerHTML = '<option value="">Select Model</option>';
 
         if (selectedBrand) {
           models[selectedBrand].forEach((model) => {
             const option = document.createElement("option");
-            option.value = model.name; // Set the model name as the value
-            option.textContent = model.name; // Display the model name
+            option.value = model.name; 
+            option.textContent = model.name;
             modelSelect.appendChild(option);
           });
         }
