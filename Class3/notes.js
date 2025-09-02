@@ -278,6 +278,7 @@ f.forEach(fruit => console.log("I like " + fruit));
 const n = [5, 12, 8, 130, 44];
 const found = n.find(num => num > 10);
 
+
 console.log(found); // 12 (first number > 10)
 // reduce()
 
