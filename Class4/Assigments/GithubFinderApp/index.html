@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Finder</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body
+    class="mt-12 bg-black flex flex-col items-center justify-center p-4"
+  >
+    <header class="w-full max-w-md mb-8 text-center">
+      <h1 class="text-4xl font-bold text-white mb-2">GitHub Finder</h1>
+      <p class="text-gray-200">
+        Search for any GitHub user and discover their profile
+      </p>
+    </header>
+
+    <main
+      class="w-full max-w-4xl mx-auto bg-white rounded-lg shadow-2xl overflow-hidden"
+    >
+      <div class="bg-gray-50 px-6 py-8">
+        <div class="flex flex-col sm:flex-row gap-4">
+          <input
+            type="text"
+            id="username"
+            placeholder="Enter GitHub username"
+            class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
+          />
+          <button
+            id="searchBtn"
+            class="px-12 py-3 bg-green-600 text-white rounded-lg hover:opacity-50 hover:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+
+      <div id="userInfo" class="px-6 py-8">
+        <!-- User info will be displayed here -->
+      </div>
+
+      <div
+        id="errorMsg"
+        class="hidden px-6 py-4 bg-red-100 border-l-4 border-red-500"
+      >
+        <p class="text-red-700">
+          User not found. Please check the username and try again.
+        </p>
+      </div>
+    </main>
+    <footer
+      class="w-full bg-gray-900 text-gray-300 text-center fixed bottom-0 py-4 mt-8"
+    >
+      <p>
+        Created by
+        <a
+          href="https://shoaibmemon.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-blue-400 hover:underline"
+        >
+          shoaibmemon
+        </a>
+      </p>
+    </footer>
+  </body>
+  <script src="./app.js"></script>
+</html>
