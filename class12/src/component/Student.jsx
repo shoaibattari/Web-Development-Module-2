@@ -1,8 +1,11 @@
-import React, { useState } from "react";
-// import { Provider } from "react-redux";
-// import { store } from "./store";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addStudent, updateStudent, deleteStudent } from "../studentSlice";
+import {
+  addStudent,
+  updateStudent,
+  deleteStudent,
+  fetchStudents,
+} from "../studentSlice";
 
 const Student = () => {
   const dispatch = useDispatch();
@@ -15,18 +18,27 @@ const Student = () => {
     result: "",
   });
 
+  useEffect(() => {
+    dispatch(fetchStudents());
+  }, [dispatch, updateStudent]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.id) {
       dispatch(updateStudent(formData));
     } else {
-      dispatch(addStudent({ ...formData, id: Date.now() }));
+      dispatch(addStudent(formData));
     }
     setFormData({ id: null, fullName: "", section: "", result: "" });
   };
 
   const handleEdit = (student) => {
     setFormData(student);
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deleteStudent(id));
+    dispatch(fetchStudents());
   };
 
   return (
@@ -97,7 +109,8 @@ const Student = () => {
                   Edit
                 </button>
                 <button
-                  onClick={() => dispatch(deleteStudent(student.id))}
+                  onClick={() => handleDelete(student)}
+                  // onClick={() => dispatch(deleteStudent(student.id))}
                   className="text-red-600 hover:underline"
                 >
                   Delete
